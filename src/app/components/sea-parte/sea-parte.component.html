@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-md-8">
+    <div class="card">
+      <h3 class="card-header" style="background-color:firebrick;color:white">
+        <span>Sea Parte!</span>
+      </h3>
+      <div class="card-block">
+        <h4 class="card-title"></h4>
+        <p class="card-text">
+          Actualmente Vida Joven Costa Rica tiene presencia en 19 comunidades del Valle Central. Nuestro sueño es que en cada comunidad
+          del país haya líderes de Vida Joven impactando positivamente la vida de los adolescentes a través del mensaje de
+          Jesús. Para hacer esto posible necesitamos que más personas se unan a nuestra red de colaboradores y así poder
+          expandir el impacto en Costa Rica. Las maneras en las que se puede ser parte de nuestro equipo son:
+        </p>
+      </div>
+      <div class="card-block">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target=".bd-example-modal"(click)="OpcionSeaParte('Patrocinador')">Patrocinador</button>
+            <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target=".bd-example-modal"(click)="OpcionSeaParte('YoMeUno')">Yo me uno</button>
+            <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target=".bd-example-modal"(click)="OpcionSeaParte('Voluntario')">Voluntario</button>
+            <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target=".bd-example-modal"(click)="OpcionSeaParte('Alianza')">Alianzas Corporativas</button>
+          </div>
+          <p style="margin-top:15px">Más información: <a href="#">npacheco@vidajoven.cr</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card">
+      <img style="width: 400px; text-align: left" src="../../../assets/img/Quienes1.jpg" />
+    </div>
+  </div>
+</div>
+<div class="modal fade bd-example-modal" tabindex="-1" role="dialog" aria-labelledby="ModalDeSeaParte" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{Contenido.Titulo}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div [ngSwitch]="Contenido.Opcion">
+          <div *ngSwitchCase="'Patrocinador'">
+            <div [innerHTML] = "Contenido.Texto | keepHtml"></div>
+          </div>
+          <div *ngSwitchCase="'YoMeUno'">
+            <div [innerHTML]="Contenido.Texto | keepHtml"></div>
+            <div>
+              <p>Yo me uno Vida Joven-Young Life Costa Rica<a href="https://yomeuno.com/costa-rica/organizaciones/vida-jovenyoung-life" style="padding-left: 10px"><i class="fas fa-external-link-alt"></i></a></p>
+            </div>
+          </div>
+          <div *ngSwitchCase="'Voluntario'">
+            <div [innerHTML] = "Contenido.Texto | keepHtml"></div>
+          </div>
+          <div *ngSwitchCase="'Alianza'">
+            <div [innerHTML] = "Contenido.Texto | keepHtml"></div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

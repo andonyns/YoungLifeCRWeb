@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4" *ngFor='let area of ListaAreas let i index'>
+      <div class="card" style="width: 20rem;">
+        <img class="card-img-top" [src]='area.img' alt="Card image cap" width=320px>
+        <div class="card-block">
+          <h4 class="card-title">{{area.nombre}}</h4>
+          <p class="card-text"></p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" *ngFor='let comunidad of area.ListaComunidades'>{{comunidad.Nombre}}</li>
+        </ul>
+        <div class="card-block">
+          <div class="row">
+            <div class="col-md-6">
+              <p>Siguenos en:
+                <a [href]="area.LinkFacebook" class="card-link" style="padding-left: 10px">
+                  <i class="fab fa-facebook"></i>
+                </a>
+              </p>
+            </div>
+            <div class="col-md-6">
+              <button class="btn btn-info btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg" (click)="Seleccionar_Area(area)">Informacion</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{AreSeleccionada.nombre}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <thead class="thead-inverse">
+            <tr>
+              <th>Nombre Comunidad</th>
+              <th>Horario</th>
+              <th>Director</th>
+              <th>Contacto</th>
+              <th>Lugar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let comunidad of AreSeleccionada.ListaComunidades" >
+              <td>{{comunidad.Nombre}}</td>
+              <td>{{comunidad.Horario}}</td>
+              <td>{{comunidad.Director}}</td>
+              <td>{{comunidad.Contacto}}</td>
+              <td>{{comunidad.Lugar}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
